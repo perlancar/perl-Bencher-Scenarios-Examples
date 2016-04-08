@@ -8,9 +8,11 @@ use strict;
 use warnings;
 
 our $scenario = {
-    summary => 'Cmdline that outputs something to stdout',
+    summary => 'Cmdline that outputs something to stdout/stderr',
     participants => [
-        {perl_cmdline => ['-E', 'say 42']},
+        {name=>'stdout'       , perl_cmdline => ['-E', 'say 42']},
+        {name=>'stderr'       , perl_cmdline => ['-E', 'warn 42']},
+        {name=>'stdout+stderr', perl_cmdline => ['-E', 'say 42; warn -42']},
     ],
 };
 
